@@ -1,0 +1,52 @@
+/*
+Question: 
+Input string: kkkxAAkkBBccc
+Find out the occurrence of duplicate character and print in a string (if character is not repeating then 
+just print the character in the string (order should be maintained)
+so the output string will be output: 5kx2A2B3c
+*/
+
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class String_duplicate {
+	
+	public static void main(String[] args) {
+	
+	String input = "kkkxAAkkBBccc";
+  
+	//Taking LinkedHashMap because order should be maintain
+	LinkedHashMap<Character, Integer> hashmap = new LinkedHashMap<>();
+	for (int i=0;i<input.length();i++) {
+		
+		if (hashmap.containsKey(input.charAt(i))){
+			
+			int count = hashmap.get(input.charAt(i));
+			hashmap.put(input.charAt(i), count+1);
+		}
+		else
+			hashmap.put(input.charAt(i), 1);
+		
+			
+	}
+	StringBuffer sb = new StringBuffer();
+	for (Map.Entry<Character,Integer> set : hashmap.entrySet()) {
+		
+		
+		if (set.getValue()!=1) {
+			sb.append(set.getValue());
+			sb.append(set.getKey());
+		}
+		else
+			sb.append(set.getKey());
+		
+		
+	}
+	System.out.println(sb);
+
+	
+	
+}
+}
+
